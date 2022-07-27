@@ -104,4 +104,53 @@ minimum size=0.5cm] (tn) {} node[anchor=north west] at (tn) {$h_N$};
     $$y[n] = \sum^N_{i=0} h_i x[n-i]$$
 
 
+\begin{tikzpicture}
+    \draw[->, thick] (0,0) -- (10.5,0);
+    \draw[->, thick] (0,0) -- (0,5);
+    
+    \draw (0,3) -- (3.5,3) --++ (0,-3);
+    \draw (0,3.5) -- (3.5,3.5) --++ (0,0.5);
+    \fill[gray, fill opacity=0.2] (0,0) rectangle (3.5,3);
+    \fill[gray, fill opacity=0.2] (0,3.5) rectangle (3.5,4);
+
+    \draw (4,1) -- (4,0.3) -- (10,0.3) --++ (0,0.7);
+    \fill[gray, fill opacity=0.2] (4, 0.3) rectangle (10,1);
+
+    \draw[dotted] (0, 3.25) -- (3.75, 3.25) --++ (0,-3.25);
+    
+    \draw plot [smooth] file {../src/data.txt};
+    
+    \draw[->] (-0.5,3.5) -- (-0.1,3.5) node[yshift=0cm, xshift=-1.1cm] {$1+\delta_{pass}$};
+
+    
+    \draw[->] (-0.5,3) -- (-0.1,3) node[yshift=0cm, xshift=-1.1cm] {$1-\delta_{pass}$};
+    \draw[->] (-0.5,0.4) -- (-0.1,0.4) node[yshift=0cm, xshift=-0.8cm] {$\delta_{stop}$};
+
+    \draw[->] (2.5,4.2) node[above, align=center] {designed \\ filter $|H(f)|$} -- (3.15,3.35) ;
+    \draw[->] (5,4.2) node[above, align=center] {ideal \\ filter $|D(f)|$} -- (3.76,3.26) ;
+
+    \draw[-] (-0.1,3.25) -- (0.1,3.25) node[yshift=0cm, xshift=-0.4cm] {\tiny $1$};
+    \draw[-] (-0.1,1.6125) -- (0.1,1.6125) node[yshift=0cm, xshift=-0.4cm] {\tiny $1/2$};
+
+    \draw[<->|] (3.5,1.6125) -- (4,1.6125) node[right] {$\Delta f =$ width};
+    \node at (0,-.2) {\tiny 0};
+
+    \draw[->] (3.75,-0.7) -- (3.75,0) node[yshift=-0.9cm] {$f_c$};
+    \draw[-] (3.5,--0.1) -- (3.5,0.1) node[xshift=-.2cm,yshift=-0.4cm] {$f_{pass}$};
+    \draw[-] (4,-0.1) -- (4,0.1) node[xshift=0.2cm,yshift=-0.4cm] {$f_{stop}$};
+
+    \draw[-] (10,-0.1) -- (10,0.1) node [xshift=0cm,yshift=-0.4cm] {$f_s/2 $};
+    \node at (10,0)[xshift=0.4cm,yshift=0.4cm] {$f$};
+
+    \draw[|<->|] (4.5,3) -- node[right] {$A_{pass}$} (4.5,3.5);
+    \draw[<->|] (6.5,0.3) -- node[right] {$A_{stop}$} (6.5,3.25);
+
+    \draw[|<->|] (0,-1) -- node[fill=white] {passband} (3.5,-1);
+    \draw[|<->|] (4,-1) -- node[fill=white] {stopband} (10,-1);
+
+
+
+\end{tikzpicture}
+
+
 \end{document}

@@ -5,10 +5,10 @@ Created on Wed Jul 20 14:57:38 2022
 
 @author: nunigan
 """
-from tkinter import X
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
+from scipy import signal
 from datetime import datetime
 
 
@@ -20,7 +20,7 @@ class fir():
         # Create a signal for demonstration.
         #------------------------------------------------
         self.path = path
-        self.sample_rate = 100.0
+        self.sample_rate = 200.0
         self.nsamples = 1024
         self.t = np.arange(self.nsamples) / self.sample_rate
         self.x = (np.cos(2*np.pi*0.5*self.t) + 0.2*np.sin(2*np.pi*2.5*self.t+0.1) + \
@@ -37,16 +37,16 @@ class fir():
         # The desired width of the transition from pass to stop,
         # relative to the Nyquist rate.  We'll design the filter
         # with a 5 Hz transition width.
-        self.width = 5.0/self.nyq_rate
+        self.width = 4/self.nyq_rate
         
         # The desired attenuation in the stop band, in dB.
-        self.ripple_db = 60.0
+        self.ripple_db = 22.0
         
         # Compute the order and Kaiser parameter for the FIR filter.
         self.N, self.beta = scipy.signal.kaiserord(self.ripple_db, self.width)
         
         # The cutoff frequency of the filter.
-        self.cutoff_hz = 10.0
+        self.cutoff_hz = 37.5
         
         # Use firwin with a Kaiser window to create a lowpass FIR filter.
         self.taps = scipy.signal.firwin(self.N, self.cutoff_hz/self.nyq_rate, window=('kaiser', self.beta))
@@ -112,28 +112,34 @@ class fir():
         plt.figure(2, figsize=(8,4))
         plt.clf()
         w, h = scipy.signal.freqz(self.taps, worN=8000)
-        plt.plot((w/np.pi)*self.nyq_rate, np.absolute(h), linewidth=2)
+        # np.savetxt('y.txt', w/np.pi)*self.nyq_rate)
+        plt.plot((w/np.pi)*self.nyq_rate/10, np.absolute(h)*3.25, linewidth=2)
+        
+        # np.savetxt('x.txt', (w/np.pi)*self.nyq_rate/10)
+
+        data = np.column_stack(((w/np.pi)*self.nyq_rate/10, np.absolute(h)*3.25))
+        np.savetxt('data.txt', data)
+
         plt.xlabel('Frequency (Hz)')
         plt.ylabel('Gain')
         plt.title('Frequency Response')
-        plt.ylim(-0.05, 1.05)
         plt.grid(True)
         
         # Upper inset plot.
-        ax1 = plt.axes([0.42, 0.6, .45, .25])
-        plt.plot((w/np.pi)*self.nyq_rate, np.absolute(h), linewidth=2)
-        plt.xlim(0,8.0)
-        plt.ylim(0.9985, 1.001)
-        plt.text(4,1.0005,"Passband Ripple",bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'))
-        plt.grid(True)
+        # ax1 = plt.axes([0.42, 0.6, .45, .25])
+        # plt.plot((w/np.pi)*self.nyq_rate, np.absolute(h), linewidth=2)
+        # plt.xlim(0,8.0)
+        # plt.ylim(0.9985, 1.001)
+        # plt.text(4,1.0005,"Passband Ripple",bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'))
+        # plt.grid(True)
         
-        # Lower inset plot
-        ax2 = plt.axes([0.42, 0.25, .45, .25])
-        plt.plot((w/np.pi)*self.nyq_rate, np.absolute(h), linewidth=2)
-        plt.xlim(12.0, 20.0)
-        plt.text(16, 0.002,"Stopband Ripple",bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'))
-        plt.ylim(0.0, 0.0025)
-        plt.grid(True)
+        # # Lower inset plot
+        # ax2 = plt.axes([0.42, 0.25, .45, .25])
+        # plt.plot((w/np.pi)*self.nyq_rate, np.absolute(h), linewidth=2)
+        # plt.xlim(12.0, 20.0)
+        # plt.text(16, 0.002,"Stopband Ripple",bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'))
+        # plt.ylim(0.0, 0.0025)
+        # plt.grid(True)
         
 
         #------------------------------------------------

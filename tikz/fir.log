@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.4.26)  26 JUL 2022 09:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.9.21)  27 JUL 2022 15:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/media/nunigan/SSD2/work/HLS/FIR-FIlter_HLS/tikz/fir.tex
-(/media/nunigan/SSD2/work/HLS/FIR-FIlter_HLS/tikz/fir.tex
+**/home/nunigan/Documents/FIR-FIlter_HLS/tikz/fir.tex
+(/home/nunigan/Documents/FIR-FIlter_HLS/tikz/fir.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14> (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
 Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files standalone
@@ -839,7 +839,7 @@ File: pgflibrarypatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 File: tikzlibraryshapes.arrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
 File: pgflibraryshapes.arrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)) (/media/nunigan/SSD2/work/HLS/FIR-FIlter_HLS/tikz/fir.aux)
+)) (/home/nunigan/Documents/FIR-FIlter_HLS/tikz/fir.aux)
 \openout1 = `fir.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 38.
@@ -970,7 +970,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 38.
 LaTeX Info: Redefining \pageref on input line 38.
 LaTeX Info: Redefining \nameref on input line 38.
- (/media/nunigan/SSD2/work/HLS/FIR-FIlter_HLS/tikz/fir.out) (/media/nunigan/SSD2/work/HLS/FIR-FIlter_HLS/tikz/fir.out)
+ (/home/nunigan/Documents/FIR-FIlter_HLS/tikz/fir.out) (/home/nunigan/Documents/FIR-FIlter_HLS/tikz/fir.out)
 \@outlinefile=\write5
 \openout5 = `fir.out'.
 
@@ -988,24 +988,24 @@ Package pgfplots notification 'compat/show suggested version=true': document has
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 107.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 107.
- (/media/nunigan/SSD2/work/HLS/FIR-FIlter_HLS/tikz/fir.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 107.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 107.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 156.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 156.
+ (/home/nunigan/Documents/FIR-FIlter_HLS/tikz/fir.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 156.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 156.
 Package rerunfilecheck Info: File `fir.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36098 strings out of 481239
- 815266 string characters out of 5920377
- 1348864 words of memory out of 5000000
- 50624 multiletter control sequences out of 15000+600000
- 555128 words of font info for 81 fonts, out of 8000000 for 9000
+ 36142 strings out of 481239
+ 815981 string characters out of 5920377
+ 3785154 words of memory out of 5000000
+ 50662 multiletter control sequences out of 15000+600000
+ 559475 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,9n,136p,3284b,726s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 78i,9n,136p,3279b,726s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /media/nunigan/SSD2/work/HLS/FIR-FIlter_HLS/tikz/fir.pdf (1 page, 26465 bytes).
+Output written on /home/nunigan/Documents/FIR-FIlter_HLS/tikz/fir.pdf (1 page, 210439 bytes).
 PDF statistics:
  45 PDF objects out of 1000 (max. 8388607)
  34 compressed objects within 1 object stream
