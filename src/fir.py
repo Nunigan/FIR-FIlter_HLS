@@ -20,12 +20,13 @@ class fir():
         # Create a signal for demonstration.
         #------------------------------------------------
         self.path = path
-        self.sample_rate = 100.0
-        self.nsamples = 1024
+        self.sample_rate = 10000
+        self.nsamples = 1000
+        self.fac = self.sample_rate/100
         self.t = np.arange(self.nsamples) / self.sample_rate
-        self.x = (np.cos(2*np.pi*0.5*self.t) + 0.2*np.sin(2*np.pi*2.5*self.t+0.1) + \
-                0.2*np.sin(2*np.pi*15.3*self.t) + 0.1*np.sin(2*np.pi*16.7*self.t + 0.1) + \
-                    0.1*np.sin(2*np.pi*23.45*self.t+.8))/2
+        self.x = (np.cos(2*np.pi*0.5*self.t*self.fac) + 0.2*np.sin(2*np.pi*2.5*self.t*self.fac+0.1) + \
+                0.2*np.sin(2*np.pi*15.3*self.t*self.fac) + 0.1*np.sin(2*np.pi*16.7*self.t*self.fac + 0.1) + \
+                    0.1*np.sin(2*np.pi*23.45*self.t*self.fac+.8))/2
 
         #------------------------------------------------
         # Create a FIR filter and apply it to x.
@@ -37,7 +38,7 @@ class fir():
         # The desired width of the transition from pass to stop,
         # relative to the Nyquist rate.  We'll design the filter
         # with a 5 Hz transition width.
-        self.width = 5.0/self.nyq_rate
+        self.width = self.fac*5.0/self.nyq_rate
         
         # The desired attenuation in the stop band, in dB.
         self.ripple_db = 60.0
@@ -46,7 +47,7 @@ class fir():
         self.N, self.beta = scipy.signal.kaiserord(self.ripple_db, self.width)
         
         # The cutoff frequency of the filter.
-        self.cutoff_hz = 10.0
+        self.cutoff_hz = 1000.0
         
         # Use firwin with a Kaiser window to create a lowpass FIR filter.
         self.taps = scipy.signal.firwin(self.N, self.cutoff_hz/self.nyq_rate, window=('kaiser', self.beta))
@@ -117,21 +118,23 @@ class fir():
         plt.ylabel('Gain')
         plt.title('Frequency Response')
         plt.ylim(-0.05, 1.05)
+        # plt.xscale('log')
+        # plt.yscale('log')
         plt.grid(True)
         
         # Upper inset plot.
         ax1 = plt.axes([0.42, 0.6, .45, .25])
         plt.plot((w/np.pi)*self.nyq_rate, np.absolute(h), linewidth=2)
-        plt.xlim(0,8.0)
+        plt.xlim(0,8*self.fac)
         plt.ylim(0.9985, 1.001)
-        plt.text(4,1.0005,"Passband Ripple",bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'))
+        plt.text(4*self.fac,1.0005,"Passband Ripple",bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'))
         plt.grid(True)
         
         # Lower inset plot
         ax2 = plt.axes([0.42, 0.25, .45, .25])
         plt.plot((w/np.pi)*self.nyq_rate, np.absolute(h), linewidth=2)
-        plt.xlim(12.0, 20.0)
-        plt.text(16, 0.002,"Stopband Ripple",bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'))
+        plt.xlim(12*self.fac, 20*self.fac)
+        plt.text(16*self.fac, 0.002,"Stopband Ripple",bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'))
         plt.ylim(0.0, 0.0025)
         plt.grid(True)
         
