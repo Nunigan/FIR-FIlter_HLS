@@ -20,8 +20,8 @@ class fir():
         # Create a signal for demonstration.
         #------------------------------------------------
         self.path = path
-        self.sample_rate = 10000
-        self.nsamples = 1000
+        self.sample_rate = 100
+        self.nsamples = 1024
         self.fac = self.sample_rate/100
         self.t = np.arange(self.nsamples) / self.sample_rate
         self.x = (np.cos(2*np.pi*0.5*self.t*self.fac) + 0.2*np.sin(2*np.pi*2.5*self.t*self.fac+0.1) + \
@@ -47,7 +47,7 @@ class fir():
         self.N, self.beta = scipy.signal.kaiserord(self.ripple_db, self.width)
         
         # The cutoff frequency of the filter.
-        self.cutoff_hz = 1000.0
+        self.cutoff_hz = 10*self.fac
         
         # Use firwin with a Kaiser window to create a lowpass FIR filter.
         self.taps = scipy.signal.firwin(self.N, self.cutoff_hz/self.nyq_rate, window=('kaiser', self.beta))
