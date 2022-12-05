@@ -19,9 +19,9 @@ int main() {
 
 	fir_fixed(x, out_fixed);
 
-		for (int i = 0; i < SIZE; i++) {
-		if (fabs(out[i]-out_fixed[i]) > 0.000001)
-			std::cout << "fixed fir wrong " << i << ": " << out[i] << " ,"<< filtered_x[i] << std::endl;
+	for (int i = 0; i < SIZE; i++) {
+		if (fabs(out_fixed[i]-filtered_x[i]) > 0.000001)
+			std::cout << "fixed fir wrong " << i << ": " << out_fixed[i] << " ,"<< filtered_x[i] << std::endl;
 	}
 }
 

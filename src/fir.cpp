@@ -34,7 +34,7 @@ void fir_fixed(const float input[], float output[]){
 #pragma HLS INTERFACE s_axilite port=return bundle=control
 
 	static ap_fixed<W,I> shift_reg_fixed[NUM_TAPS];
-	#pragma HLS ARRAY_PARTITION variable=shift_reg complete dim=0
+	#pragma HLS ARRAY_PARTITION variable=shift_reg_fixed complete dim=0
 
 	for(int j = 0; j < SIZE; j ++ ) {
 		#pragma HLS pipeline II=1
@@ -46,7 +46,7 @@ void fir_fixed(const float input[], float output[]){
 		}
 
 		acc += (ap_fixed<W,I>)input[j] * taps_fixed[0];
-		shift_reg_fixed[0] = input[j];
+		shift_reg_fixed[0] = (ap_fixed<W,I>)input[j];
 		output[j] = (float)acc;
 	}
 }
